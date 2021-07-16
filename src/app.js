@@ -8,7 +8,7 @@ require('dotenv').config({ path: './.env' })
 const app = express();
 
 //Settings
-app.set('port', process.env.PORT);
+app.set('port', process.env.PORT || 8080);
 app.set('views', path.resolve(__dirname, 'views'));
 app.use(cors());
 
