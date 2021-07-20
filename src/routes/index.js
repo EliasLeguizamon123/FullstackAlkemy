@@ -18,7 +18,7 @@ setInterval(()=>{
 
 //* Route to get All forms
 router.get('/', (req, res) => {
-    connection.query(`SELECT * FROM form`, (err, rows) => {
+    connection.query(`SELECT ID, concept, amount,  isType, date_format(creationDate, \'%Y/%m/%d\') as creationDate, category, FROM form `, (err, rows) => {
         if(!err){
             res.json(rows)
         }else{
@@ -43,7 +43,7 @@ router.post('/new', (req, res) => {
 });
 
 //* Route to delete an existing Form
-router.delete('/:id', (req, res) => {
+router.delete('/delete', (req, res) => {
     const {ID} = req.body
     connection.query(`DELETE FROM form WHERE ID = ?`, ID, (err, rows) => {
         err ? res.json(rows) : console.log(err);
