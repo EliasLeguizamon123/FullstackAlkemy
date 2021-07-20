@@ -18,7 +18,7 @@ setInterval(()=>{
 
 //* Route to get All forms
 router.get('/', (req, res) => {
-    connection.query(`SELECT ID, concept, amount,  isType, date_format(fechamat, \'%Y/%m/%d\') as fechamat, category FROM form`, (err, rows) => {
+    connection.query(`SELECT ID, concept, amount,  isType, date_format(creationDate, \'%Y/%m/%d\') as creationDate, category FROM form`, (err, rows) => {
         if(!err){
             res.json(rows)
         }else{
