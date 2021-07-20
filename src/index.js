@@ -18,7 +18,7 @@ setInterval(()=>{
 
 //* Route to get All forms
 router.get('/', (req, res) => {
-    connection.query(`SELECT * FROM form WHERE DATE_FORMAT(creationDate, 'yyyy-MM-dd') `, (err, rows) => {
+    connection.query(`SELECT * FROM form`, (err, rows) => {
         if(!err){
             res.json(rows)
         }else{
