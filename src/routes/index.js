@@ -27,27 +27,39 @@ router.get('/', (req, res) => {
     })
 })
 
+//*Rooute to get only 1 form by ID
+router.get('/get/:ID', (req, res) => {
+    const {ID} = req.params;
+    connection.query(`SELECT * FROM form WHERE ID = ?`, [ID], (err, rows) => {
+        !err ? res.json(rows) : console.log(err);
+    });
+});
+
 //* Route to post new Form
 router.post('/new', (req, res) => {
     const {ID, concept, amount,  isType, category} = req.body
     connection.query(`INSERT INTO form VALUES(?, ?, ?, ?, ?, ?)`,
      [ID, concept, amount, new Date(), isType, category], 
         (err, rows) => {
-            if(err){
-                throw err;
-            } else{
-                console.log('New form creating succesfuly');
-                res.json(rows)
-            }
+            !err ? res.json(rows) : console.log(err);
         });
 });
 
 //* Route to delete an existing Form
-router.delete('/delete', (req, res) => {
-    const {ID} = req.body
-    connection.query(`DELETE FROM form WHERE ID = ?`, ID, (err, rows) => {
-        err ? res.json(rows) : console.log(err);
-    })
-})
+router.get('/delete/:ID', (req, res) => {
+    const {ID} = req.params;
+    connection.query(`DELETE FROM form WHERE ID = ?`, [ID], (err, rows) => {
+        !err ? res.json(rows) : console.log(err);
+    });
+});
+
+//* Route to Update an existing Form
+router.put('/update/:ID', (req, res) => {
+    const { ID } = req.params;
+    const newForm = req.body;
+    connection.query(`UPDATE form SET ? WHERE ID = ?`, [newForm, ID], (err,rows) => {
+        !err ? res.json(rows) : console.log(err);
+    });
+});
 
 module.exports = router;

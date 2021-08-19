@@ -17,6 +17,7 @@
     "morgan": "^1.10.0",
     "mysql": "github:mysqljs/mysql",
     "nodemon": "^2.0.12",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-router-dom": "^5.2.0"
   }
 }
