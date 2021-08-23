@@ -10,7 +10,6 @@ import {Link} from 'react-router-dom';
 export default function Card (form) {
     const { ID, concept, amount, creationDate, isType, category} = form;
 
-    
     let type = isType === 1 ? 'Ingreso' : 'Egreso';
 
     return (
@@ -49,7 +48,7 @@ export default function Card (form) {
                 <Text>{`Concepto: ${concept}`}</Text>
             </Stack>
             <Stack direction={'row'} align={'center'} justify={'center'} spacing={24}>
-                <Link to={`/edit/${ID}`}>
+                <Link to={`/edit/${ID}`} >
                     <Button
                             mt={10}
                             bg={'gray.400'}
@@ -75,7 +74,7 @@ export default function Card (form) {
                     }}
                     position="end"
                     >
-                    Eliminar
+                        Eliminar
                 </Button>
                 </Link>
             </Stack> 

@@ -11,27 +11,33 @@ import {
     Text,
 } from '@chakra-ui/react';
 import {CheckIcon, CloseIcon} from '@chakra-ui/icons';
-import {Link, } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
+import EditForm from '../pages/EditForm';
 
-export default function MyForm () {
+export default function MyForm ({ ID, concept, amount,  isType, category}) {
+    let history = useHistory();
+    // let {id} = useParams();
+
     const handdleSendForm = async (values) => {
         const response = await axios.post('https://whispering-forest-95291.herokuapp.com/new', values);
         const data = await response.data;
         alert('Formulario guardado correctamente')
         console.log(data);
+        history.push(`/`);
     }
-    
+
     const formik = useFormik({
         initialValues: {
-            concept: '',
-            amount: '',
-            category: '',
-            isType: '',
+            concept: concept ? concept : "",
+            amount: amount ? amount : "",
+            category: category ? category : "",
+            isType: isType ? isType : "",
         },
         onSubmit : values => {
-            //alert(JSON.stringify(values, null, 2));
-            handdleSendForm(values)
+            // handdleSendForm(values)
+            EditForm(values);
+            
         },
     });
 
