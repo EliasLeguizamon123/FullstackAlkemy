@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
     })
 })
 
-//*Rooute to get only 1 form by ID
+//*Route to get only 1 form by ID
 router.get('/get/:ID', (req, res) => {
     const {ID} = req.params;
     connection.query(`SELECT * FROM form WHERE ID = ?`, [ID], (err, rows) => {
