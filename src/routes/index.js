@@ -46,7 +46,7 @@ router.post('/new', (req, res) => {
 });
 
 //* Route to delete an existing Form
-router.get('/delete/:ID', (req, res) => {
+router.delete('/:ID', (req, res) => {
     const {ID} = req.params;
     connection.query(`DELETE FROM form WHERE ID = ?`, [ID], (err, rows) => {
         !err ? res.json(rows) : console.log(err);
@@ -54,7 +54,7 @@ router.get('/delete/:ID', (req, res) => {
 });
 
 //* Route to Update an existing Form
-router.put('/update/:ID', (req, res) => {
+router.put('/:ID', (req, res) => {
     const { ID } = req.params;
     const newForm = req.body;
     connection.query(`UPDATE form SET ? WHERE ID = ?`, [newForm, ID], (err,rows) => {
