@@ -2,18 +2,18 @@ import React from 'react'
 import Form from '../components/Form'
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import {useParams} from 'react-router-dom';
 
-const EditForm = (form) => {
+const EditForm = () => {
     const [data, setData] = useState();
-    const {ID} = form;
-
-    useEffect((ID) =>{
-        updateFormById(ID);
+    let {ID} = useParams();
+    useEffect(() =>{
+        getFormById(ID);
     },[])
 
-    const updateFormById = async ID => {
+    const getFormById = async ID => {
         try{
-            const response = await axios.put(`https://whispering-forest-95291.herokuapp.com/update/${ID}`)
+            const response = await axios.get(`https://whispering-forest-95291.herokuapp.com/get/${ID}`)
             const formData = await response.data;
             console.log(formData[0]);
             setData( formData[0] );
@@ -22,10 +22,12 @@ const EditForm = (form) => {
             console.log(err);
         }
     }
+
     console.log(data);
+
     return (
         <div>
-            <Form {...data}/>
+            {data && <Form {...data}/>}
         </div>
     )
 }

@@ -26,8 +26,8 @@ const Home = (form) => {
     
     if (isLoading) {
         return (
-            <Box marginLeft={'50%'} marginTop={'15%'}>
-                <Spinner color="teal" />
+            <Box display={'flex'} alignItems={'center'} justifyContent={'center'} h={'80vh'}>
+                <Spinner color="teal" size="xl" emptyColor="gray.200" speed="0.8s"/>
             </Box>
         )
     }
