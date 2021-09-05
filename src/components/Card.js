@@ -25,8 +25,8 @@ export default function Card ({ ID, concept, amount, creationDate, isType, categ
 						duration: 9000,
 						isClosable: true,
 					})
-					
 				}
+			
 			catch (err) {console.log(err)}
 			}
 
