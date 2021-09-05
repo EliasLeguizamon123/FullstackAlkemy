@@ -1,4 +1,4 @@
-import {SimpleGrid, Spinner, Box, Text} from '@chakra-ui/react'
+import {SimpleGrid, Spinner, Box} from '@chakra-ui/react'
 import Card from './Card';
 import {useState, useEffect} from 'react'
 import axios from 'axios';
@@ -26,7 +26,7 @@ const Home = (form) => {
     
     if (isLoading) {
         return (
-            <Box marginLeft={'50%'} marginTop={'15%'}>
+            <Box display={'flex'} alignItems={'center'} justifyContent={'center'} h={'80vh'}>
                 <Spinner color="teal" size="xl" emptyColor="gray.200" speed="0.8s"/>
             </Box>
         )

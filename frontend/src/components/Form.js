@@ -9,35 +9,59 @@ import {
     useColorModeValue, 
     Select, 
     Text,
+    useToast
 } from '@chakra-ui/react';
 import {CheckIcon, CloseIcon} from '@chakra-ui/icons';
 import {Link, useHistory} from 'react-router-dom';
 import axios from 'axios';
-import EditForm from '../pages/EditForm';
 
 export default function MyForm ({ ID, concept, amount,  isType, category}) {
     let history = useHistory();
-    // let {id} = useParams();
+    const toast = useToast();
 
-    const handdleSendForm = async (values) => {
+    const addForm = async (values) => {
         const response = await axios.post('https://whispering-forest-95291.herokuapp.com/new', values);
         const data = await response.data;
-        alert('Formulario guardado correctamente')
+        toast({
+            title: "Éxito",
+              description: "Formulario creado exitosamente",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+        })
         console.log(data);
         history.push(`/`);
     }
 
+    const editForm = async (values) => {
+        try {
+            await axios.put(`https://whispering-forest-95291.herokuapp.com/${ ID }`, values)
+            toast({
+                title: "Éxito",
+                  description: "Formulario actualizado exitosamente",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            })
+            history.push(`/`);
+        }
+        catch (err) {console.log(err);}
+    }
+
+    const initialValues = {
+        concept: concept ? concept : "",
+        amount: amount ? amount : "",
+        category: category ? category : "",
+        isType: isType ? isType : "",
+    }
     const formik = useFormik({
-        initialValues: {
-            concept: concept ? concept : "",
-            amount: amount ? amount : "",
-            category: category ? category : "",
-            isType: isType ? isType : "",
-        },
+        initialValues,
         onSubmit : values => {
-            // handdleSendForm(values)
-            EditForm(values);
-            
+            if(ID){
+                editForm(values)
+            }else{
+                addForm(values)
+            }  
         },
     });
 
