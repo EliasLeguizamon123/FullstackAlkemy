@@ -8,11 +8,12 @@ import {
 		useToast
 	} from '@chakra-ui/react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 export default function Card ({ ID, concept, amount, creationDate, isType, category}) {
 		let type = isType === 1 ? 'Ingreso' : 'Egreso';
 		const toast = useToast();
+		let history = useHistory();
 
 		const deleteForm = async  ID => {
 				try {
@@ -24,7 +25,8 @@ export default function Card ({ ID, concept, amount, creationDate, isType, categ
 						duration: 9000,
 						isClosable: true,
 					})
-			}
+					
+				}
 			catch (err) {console.log(err)}
 			}
 
@@ -66,16 +68,16 @@ export default function Card ({ ID, concept, amount, creationDate, isType, categ
 							<Stack direction={'row'} align={'center'} justify={'center'} spacing={24} mt={10}>
 									<Link to={`/edit/${ID}`} >
 											<Button
-															bg={'gray.400'}
-															color={'white'}
-															rounded={'xl'}
-															_hover={{
-															bg: 'cyan.100',
-															color: 'gray.600'
-															}}
-															>
-															Editar 
-													</Button>
+												bg={'gray.400'}
+												color={'white'}
+												rounded={'xl'}
+												_hover={{
+													bg: 'cyan.100',
+													color: 'gray.600'
+												}}
+												>
+												Editar 
+											</Button>
 									</Link>
 									<Button
 											bg={'gray.400'}
