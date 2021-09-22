@@ -17,12 +17,14 @@ export default function Card ({ ID, concept, amount, creationDate, isType, categ
 
 		const deleteForm = async  ID => {
 				try {
+					alert('Se eliminará el formulario seleccionado')
 					await axios.delete(`https://whispering-forest-95291.herokuapp.com/${ ID }`)
+					history.go(0)
 					toast({
 						title: "Éxito",
           				description: "Formulario eliminado exitosamente",
 						status: "success",
-						duration: 9000,
+						duration: 5000,
 						isClosable: true,
 					})
 				}

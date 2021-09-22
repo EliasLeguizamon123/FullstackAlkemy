@@ -24,9 +24,9 @@ export default function MyForm ({ ID, concept, amount,  isType, category}) {
         const data = await response.data;
         toast({
             title: "Éxito",
-              description: "Formulario creado exitosamente",
+            description: "Formulario creado exitosamente",
             status: "success",
-            duration: 9000,
+            duration: 5000,
             isClosable: true,
         })
         console.log(data);
@@ -38,9 +38,9 @@ export default function MyForm ({ ID, concept, amount,  isType, category}) {
             await axios.put(`https://whispering-forest-95291.herokuapp.com/${ ID }`, values)
             toast({
                 title: "Éxito",
-                  description: "Formulario actualizado exitosamente",
+                description: "Formulario actualizado exitosamente",
                 status: "success",
-                duration: 9000,
+                duration: 5000,
                 isClosable: true,
             })
             history.push(`/`);
