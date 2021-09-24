@@ -75,7 +75,7 @@ export default function Card ({ ID, concept, amount, creationDate, isType, categ
 												rounded={'xl'}
 												_hover={{
 													bg: 'cyan.100',
-													color: 'gray.600'
+													color: 'black'
 												}}
 												>
 												Editar 
@@ -86,8 +86,8 @@ export default function Card ({ ID, concept, amount, creationDate, isType, categ
 											color={'white'}
 											rounded={'xl'}
 											_hover={{
-											bg: 'cyan.100',
-											color: 'gray.600'
+											bg: 'red.400',
+											color: 'black'
 											}}
 											position="end"
 											onClick={() => deleteForm(ID)}

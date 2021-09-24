@@ -43,7 +43,7 @@ export default function MyForm ({ ID, concept, amount,  isType, category}) {
                 duration: 5000,
                 isClosable: true,
             })
-            history.push(`/`);
+            history.go(`0`);
         }
         catch (err) {console.log(err);}
     }
@@ -126,7 +126,10 @@ return(
                     bg={'gray.400'} 
                     color={'white'} 
                     rounded={'xl'} 
-                    _hover={{bg: 'cyan.100', color: 'gray.600'}}
+                    _hover={{
+                        bg: 'cyan.100',
+                        color: 'black'
+                    }}
                     >
                         <CheckIcon />
                         <Text>Guardar</Text>
@@ -136,7 +139,9 @@ return(
                         bg={'gray.400'} 
                         color={'white'} 
                         rounded={'xl'} 
-                        _hover={{bg: 'cyan.100', color: 'gray.600'}}
+                        _hover={{
+                            bg: 'red.400',
+                            color: 'black'}}
                         >
                             <CloseIcon />
                             <Text>Cancelar</Text>

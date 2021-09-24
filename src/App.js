@@ -1,8 +1,8 @@
 import { Container,  } from '@chakra-ui/react'
-import NavBar from './components/NavBar';
-import Home from './components/Home';
-import Form from './components/Form';
-import EditForm from './pages/EditForm'
+import NavBar from 'components/NavBar';
+import Home from 'components/Home';
+import Form from 'components/Form';
+import EditForm from 'pages/EditForm'
 import {
   BrowserRouter as Router,
   Switch,
